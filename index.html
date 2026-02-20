@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>For You ❤️</title>
+
+<style>
+body{
+  margin:0;
+  overflow:hidden;
+  font-family:'Segoe UI',sans-serif;
+  text-align:center;
+  color:white;
+  animation:bg 12s infinite alternate;
+}
+
+@keyframes bg{
+  0%{background:#ff758c;}
+  25%{background:#7a77ff;}
+  50%{background:#00c9a7;}
+  75%{background:#ffb347;}
+  100%{background:#ff6ec7;}
+}
+
+.container{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  z-index:2;
+}
+
+h1{
+  font-size:3em;
+}
+
+#type{
+  font-size:1.5em;
+  margin-top:15px;
+  min-height:50px;
+}
+
+button{
+  padding:15px 30px;
+  font-size:1.1em;
+  border:none;
+  border-radius:30px;
+  margin:10px;
+  cursor:pointer;
+  transition:.3s;
+}
+
+#yes{background:white;color:#ff4b6e;}
+#no{background:#ff4b6e;color:white;position:absolute;}
+
+button:hover{transform:scale(1.1);}
+
+.heart,.star{
+  position:absolute;
+  animation:float linear infinite;
+}
+
+@keyframes float{
+  from{transform:translateY(100vh);}
+  to{transform:translateY(-10vh);}
+}
+
+#letter{
+  display:none;
+  margin-top:20px;
+  font-size:1.2em;
+  max-width:500px;
+}
+
+img{
+  width:150px;
+  border-radius:20px;
+  margin-top:15px;
+  box-shadow:0 0 20px rgba(255,255,255,.7);
+}
+
+#timer{
+  margin-top:15px;
+  font-size:1.2em;
+}
+</style>
+</head>
+
+<body>
+
+<audio autoplay loop>
+<source src="https://melvinsamuel099-ship-it.github.io/HER/" type="audio/mpeg">
+</audio>
+
+<div class="container">
+
+<h1>Hey pondatii❤️</h1>
+
+<div id="type"></div>
+
+<img src="https://melvinsamuel099-ship-it.github.io/YOU/">
+
+<h3>Do you love me?</h3>
+
+<button id="yes" onclick="love()">Yes 💖</button>
+<button id="no" onmouseover="move()">No 😜</button>
+
+<br>
+<button onclick="letter()">Open Love Letter 💌</button>
+
+<div id="letter">
+You’re my favorite notification,<br>
+my favorite smile,<br>
+and honestly my favorite person.<br><br>
+
+If I had to choose again,<br>
+I’d still choose you.<br><br>
+
+Every. Single. Time. ❤️
+</div>
+
+<div id="timer"></div>
+
+</div>
+
+<script>
+let text="I didn’t just fall for you… I fell into you ❤️";
+let i=0;
+function typing(){
+ if(i<text.length){
+  document.getElementById("type").innerHTML+=text.charAt(i);
+  i++;
+  setTimeout(typing,60);
+ }
+}
+typing();
+
+function love(){
+ alert("I KNEW IT 😌❤️");
+}
+
+function move(){
+ let b=document.getElementById("no");
+ b.style.top=Math.random()*80+"vh";
+ b.style.left=Math.random()*80+"vw";
+}
+
+function letter(){
+ document.getElementById("letter").style.display="block";
+}
+
+setInterval(()=>{
+ let h=document.createElement("div");
+ h.className="heart";
+ h.innerHTML="❤️";
+ h.style.left=Math.random()*100+"vw";
+ h.style.fontSize=(Math.random()*20+10)+"px";
+ h.style.animationDuration=(Math.random()*3+3)+"s";
+ document.body.appendChild(h);
+ setTimeout(()=>h.remove(),6000);
+},300);
+
+setInterval(()=>{
+ let s=document.createElement("div");
+ s.className="star";
+ s.innerHTML="✨";
+ s.style.left=Math.random()*100+"vw";
+ s.style.fontSize=(Math.random()*15+10)+"px";
+ s.style.animationDuration=(Math.random()*4+4)+"s";
+ document.body.appendChild(s);
+ setTimeout(()=>s.remove(),8000);
+},500);
+
+/* LOVE TIMER — change date */
+let start=new Date("2026-02-18");
+setInterval(()=>{
+ let now=new Date();
+ let diff=now-start;
+ let d=Math.floor(diff/1000/60/60/24);
+ document.getElementById("timer").innerHTML=
+ "Loving you for "+d+" days ❤️";
+},1000);
+</script>
+
+</body>
+</html>
